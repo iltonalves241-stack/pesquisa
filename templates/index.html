@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+    
+<html>
+    <head>
+        <title>Pesquisa de Campo sobre Interculturalidade e Relações Étnico-Raciais no Mundo do Trabalho e da Tecnologia</title>
+        <meta name="description" content="Sistema de mapeamento sobre Interculturalidade e relações étnico-raciais e trabalho e tecnologia">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>Pesquisa de Campo sobre Interculturalidade e Relações Étnico-Raciais</h1>
+
+            <p>Projeto acadêmico destinado à coleta de dados para fins educacionais.</p>
+
+            <p>Responsável: Ilton Alves</p>
+
+            <p>Este formulário não solicita senhas, cartões ou dados bancários.</p>
+        </header>
+        <main>
+            <!--Intodução-->
+            <section>
+                <h2>Sobre essa pesquisa</h2>
+                <p>Essa pesquisa é destinada ao <strong>Projeto Integrador</strong>, visando descobrir e resolver problemas da sociedade <br>sobre o tema: <strong>Interculturalidade e relações étnico-raciais e Mundo do trabalho e tecnologia</strong>.</p>
+            </section>
+        <form method="POST" action="/enviar">
+            <!--Pergunta 1-->
+            <section>
+                <h2>1 - Qual sua idade?</h2>                   
+                    <input type="text" id="p1" name="Pergunta1" placeholder="Digite sua idade..." required>
+            </section>
+            <!--Pergunta 2-->
+            <section>
+                <h2>2 - Você trabalha atualmente?</h2>             
+                    <label>
+                    <input type="radio" name="trabalha" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="trabalha" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 3-->
+            <section>
+                <h2>3 - Como você se identifica (Cor/Raça)?</h2>
+
+                <label>
+                    <input type="radio" name="cor_raca" value="Branca">
+                    Branca
+                </label>
+
+                <label>
+                    <input type="radio" name="cor_raca" value="Negra">
+                    Negra
+                </label>
+
+                <label>
+                    <input type="radio" name="cor_raca" value="Parda">
+                    Parda
+                </label>
+
+                <label>
+                    <input type="radio" name="cor_raca" value="Amarela">
+                    Amarela
+                </label>
+
+                <label>
+                    <input type="radio" name="cor_raca" value="Indígena">
+                    Indígena
+                </label>
+            </section>
+
+            <section>
+                <h2>4 - Sua cor/origem já dificultou emprego??</h2>               
+                    <label>
+                    <input type="radio" name="acesso" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="acesso" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 5-->
+            <section>
+                <h2>5 - Na sua comunidade existe respeito entre pessoas de diferentes culturas e raças?</h2>
+                    <label>
+                    <input type="radio" name="Internet" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="Internet" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 6-->
+            <section>
+                <h2>6 - Você gostaria de trabalhar em alguma área da tecnologia?</h2>
+                    <label>
+                    <input type="radio" name="tecnologia" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="tecnologia" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 7-->
+            <section>
+                <h2>7 - Você já fez algum curso de tecnologia/informática?</h2>
+                    <label>
+                    <input type="radio" name="curso" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="curso" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunata 8-->
+            <section>
+                <h2>8 - Você acredita que a cor da pele pode influenciar numa contratação?</h2>
+                    <label>
+                    <input type="radio" name="aprender" value="Sim"required >Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="aprender" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 9-->
+            <section>
+                <h2>9 - Você acha fácil encontrar cursos de tecnologia acessível na sua região?</h2>
+                    <label>
+                    <input type="radio" name="acessivel" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="acessivel" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 10-->
+            <section>
+                <h2>10 - Você acredita que a tecnologia pode melhorar suas oportunidades de trabalho?</h2>
+                    <label>
+                    <input type="radio" name="melhorar" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="melhorar" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 11-->
+            <section>
+                <h2>11 - Você já presenciou preconceito contra pessoas de cultura diferente?</h2>
+                    <label>
+                    <input type="radio" name="realidade" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="realidade" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 12-->
+            <section>
+                <h2>12 - Você acha que todas as pessoas têm as mesmas oportunidades na área de tecnologia independente de cor e raça?</h2>
+                    <label>
+                    <input type="radio" name="pessoas" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="pessoas" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 13-->
+            <section>
+                <h2>13 - Você já sentiu dificuldade de acesso a oportunidades por causa da sua origem, cor ou raça?</h2>
+                    <label>
+                    <input type="radio" name="social" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="social" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 14-->
+            <section>
+                <h2>14 - Você já sofreu algum tipo de preconceito por causa da sua origem, cor ou raça?</h2>
+                    <label>
+                    <input type="radio" name="sofreu" value="Sim" required>Sim
+                    </label>
+                    <label>
+                    <input type="radio" name="sofreu" value="Não" required>Não
+                    </label>
+            </section>
+            <!--Pergunta 15-->
+            <section>
+                <h2>15 - Na sua opnião qual o maior problema racial ou cultural na sua cidade?</h2>
+                    <label for="Comentário">Comentário:</label>
+                    <textarea name="comentario" id="Comentário" rows="4" cols="50" placeholder="Digite seu comentário aqui"></textarea>
+                    <button type="submit">Enviar respostas</button>
+            </section>
+        </form>
+                 
+        </main>
+        <footer>
+            <p>Projeto Universitário © 2026</p>
+            <p>Contato: ilton.alves@rede.ulbra.br</p>
+        </footer>
+    </body>
+</html>

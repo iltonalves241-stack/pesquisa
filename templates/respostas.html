@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respostas da Pesquisa</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f0ea;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #7d9e35;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        main {
+            padding: 30px;
+        }
+
+        .tabela-box {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+            overflow-x: auto;
+        }
+
+        h1 {
+            margin: 0;
+        }
+
+        h2 {
+            color: #331f19;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1800px;
+        }
+
+        th {
+            background-color: #7d9e35;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #eef3df;
+        }
+
+        footer {
+            background-color: #331f19;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Respostas da Pesquisa</h1>
+</header>
+
+<main>
+    <div class="tabela-box">
+        <h2>Dados Coletados</h2>
+
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Idade</th>
+                <th>Trabalha</th>
+                <th>Cor/Raça</th>
+                <th>cor/origem já dificultou emprego</th>
+                <th>Existe respeito na comunidade entre culturas e raças</th>
+                <th>Interesse em Trabalhar com Tecnologia</th>
+                <th>Já Fez Curso</th>
+                <th>Cor da pele pode influenciar numa contratação?</th>
+                <th>Cursos Acessíveis na Região</th>
+                <th>Tecnologia Melhora Oportunidades</th>
+                <th>Presenciou preconceito contra pessoas de cultura diferente?</th>
+                <th>Mesmas Oportunidades para Todos</th>
+                <th>Dificuldade por Origem/Cor/Social</th>
+                <th>Sofreu Preconceito</th>
+                <th>Comentário</th>
+            </tr>
+
+            {% for linha in dados %}
+            <tr>
+                <td>{{ linha[0] }}</td>
+                <td>{{ linha[1] }}</td>
+                <td>{{ linha[2] }}</td>
+                <td>{{ linha[3] }}</td>
+                <td>{{ linha[4] }}</td>
+                <td>{{ linha[5] }}</td>
+                <td>{{ linha[6] }}</td>
+                <td>{{ linha[7] }}</td>
+                <td>{{ linha[8] }}</td>
+                <td>{{ linha[9] }}</td>
+                <td>{{ linha[10] }}</td>
+                <td>{{ linha[11] }}</td>
+                <td>{{ linha[12] }}</td>
+                <td>{{ linha[13] }}</td>
+                <td>{{ linha[14] }}</td>
+                <td>{{ linha[15] }}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+    </div>
+</main>
+
+<footer>
+    Sistema de Mapeamento sobre Interculturalidade e Relações Étnico-Raciais, Trabalho e Tecnologia © 2026
+</footer>
+
+</body>
+</html>

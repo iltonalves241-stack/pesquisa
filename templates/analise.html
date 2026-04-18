@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise das Respostas</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#f4f0ea;
+    margin:0;
+    padding:0;
+}
+
+header{
+    background:#7d9e35;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+main{
+    padding:30px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.box{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+
+h1{
+    margin:0;
+}
+
+h2{
+    color:#331f19;
+    margin-bottom:15px;
+}
+
+p{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+}
+
+footer{
+    background:#331f19;
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <h1>Análise das Respostas</h1>
+</header>
+
+<main>
+
+<div class="box">
+    <h2>Você trabalha?</h2>
+    <p>Sim: {{ trabalha_sim }}</p>
+    <p>Não: {{ trabalha_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Sua cor/origem já dificultou emprego?</h2>
+    <p>Sim: {{ acesso_sim }}</p>
+    <p>Não: {{ acesso_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Na sua comunidade existe respeito entre pessoas de diferentes culturas e raças?</h2>
+    <p>Sim: {{ internet_sim }}</p>
+    <p>Não: {{ internet_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Cor da pele pode influenciar numa contratação?</h2>
+    <p>Sim: {{ tecnologia_sim }}</p>
+    <p>Não: {{ tecnologia_nao }}</p>
+</div>
+
+
+<div class="box">
+    <h2>Já Fez Curso de Tecnologia?</h2>
+    <p>Sim: {{ curso_sim }}</p>
+    <p>Não: {{ curso_nao }}</p>
+</div>
+
+
+<div class="box">
+    <h2>Fácil Encontrar Curso Acessível?</h2>
+    <p>Sim: {{ acessivel_sim }}</p>
+    <p>Não: {{ acessivel_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Tecnologia Pode Melhorar Oportunidades?</h2>
+    <p>Sim: {{ melhorar_sim }}</p>
+    <p>Não: {{ melhorar_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Presenciou preconceito contra pessoas de cultura diferente?</h2>
+    <p>Sim: {{ realidade_sim }}</p>
+    <p>Não: {{ realidade_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Todos Têm as Mesmas Oportunidades?</h2>
+    <p>Sim: {{ oportunidade_sim }}</p>
+    <p>Não: {{ oportunidade_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Já Sentiu Dificuldade por Origem, Cor ou raça?</h2>
+    <p>Sim: {{ dificuldade_sim }}</p>
+    <p>Não: {{ dificuldade_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Já Sofreu Preconceito?</h2>
+    <p>Sim: {{ preconceito_sim }}</p>
+    <p>Não: {{ preconceito_nao }}</p>
+</div>
+
+<div class="box">
+    <h2>Faixa Etária (%)</h2>
+    <p>Até 17 anos: {{ idade_menor }}%</p>
+    <p>18 a 30 anos: {{ idade_jovem }}%</p>
+    <p>31 a 59 anos: {{ idade_adulto }}%</p>
+    <p>60+ anos: {{ idade_idoso }}%</p>
+</div>
+
+<div class="box">
+    <h2>Cor / Raça (%)</h2>
+    <p>Branca: {{ branca }}%</p>
+    <p>Negra: {{ negra }}%</p>
+    <p>Parda: {{ parda }}%</p>
+    <p>Amarela: {{ amarela }}%</p>
+    <p>Indígena: {{ indigena }}%</p>
+</div>
+
+</main>
+
+<footer>
+Sistema de Pesquisa © 2026
+</footer>
+
+</body>
+</html>
