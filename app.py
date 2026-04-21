@@ -1,16 +1,33 @@
 from flask import Flask, request, redirect, render_template
-import sqlite3
+import psycopg2
 
 app = Flask(__name__)
 
-# CRIAR BANCO DE DADOS
+
+# CONEXÃO SUPABASE
+
+def conectar():
+    conn = psycopg2.connect(
+        host="aws-1-sa-east-1.pooler.supabase.com",
+        database="postgres",
+        user="postgres.mgcbcossxhdyzlyfbgkp",
+        password="260923@Pesquisa",
+        port="6543",
+        sslmode="require"
+    )
+    return conn
+
+
+
+# CRIAR TABELA
+
 def criar_banco():
-    conn = sqlite3.connect("banco.db")
+    conn = conectar()
     cursor = conn.cursor()
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS respostas (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id SERIAL PRIMARY KEY,
         idade TEXT,
         trabalha TEXT,
         cor_raca TEXT,
@@ -30,20 +47,22 @@ def criar_banco():
     """)
 
     conn.commit()
+    cursor.close()
     conn.close()
 
 
-# =========================
+
 # PAGINA INICIAL
-# =========================
+
 @app.route("/")
 def index():
-    return render_template("index.html")
+    sucesso = request.args.get("sucesso")
+    return render_template("index.html", sucesso=sucesso)
 
 
-# =========================
+
 # RECEBER FORMULÁRIO
-# =========================
+
 @app.route("/enviar", methods=["POST"])
 def enviar():
 
@@ -63,7 +82,7 @@ def enviar():
     sofreu = request.form.get("sofreu", "")
     comentario = request.form.get("comentario", "")
 
-    conn = sqlite3.connect("banco.db")
+    conn = conectar()
     cursor = conn.cursor()
 
     cursor.execute("""
@@ -73,7 +92,7 @@ def enviar():
         melhorar, realidade, pessoas, social,
         sofreu, comentario
     )
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
     """, (
         idade, trabalha, cor_raca, acesso, internet,
         tecnologia, curso, aprender, acessivel,
@@ -82,41 +101,45 @@ def enviar():
     ))
 
     conn.commit()
+    cursor.close()
     conn.close()
 
-    return redirect("/")
+    return redirect("/?sucesso=1")
 
 
-# VER RESPOSTAS
+
+# RESPOSTAS
 
 @app.route("/respostas")
 def respostas():
 
-    conn = sqlite3.connect("banco.db")
+    conn = conectar()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM respostas")
+    cursor.execute("SELECT * FROM respostas ORDER BY id DESC")
     dados = cursor.fetchall()
 
+    cursor.close()
     conn.close()
 
     return render_template("respostas.html", dados=dados)
 
 
+
+# ANALISE
+
 @app.route("/analise")
 def analise():
 
-    conn = sqlite3.connect("banco.db")
+    conn = conectar()
     cursor = conn.cursor()
 
-    # TOTAL DE RESPOSTAS
     cursor.execute("SELECT COUNT(*) FROM respostas")
     total = cursor.fetchone()[0]
 
     if total == 0:
         total = 1
 
-    # FUNÇÃO PARA CONTAR SIM/NÃO
     def contar(coluna):
         cursor.execute(f"SELECT COUNT(*) FROM respostas WHERE {coluna}='Sim'")
         sim = cursor.fetchone()[0]
@@ -126,8 +149,6 @@ def analise():
 
         return sim, nao
 
-
-    # PERGUNTAS SIM / NÃO
     trabalha_sim, trabalha_nao = contar("trabalha")
     tecnologia_sim, tecnologia_nao = contar("tecnologia")
     acesso_sim, acesso_nao = contar("acesso")
@@ -140,10 +161,7 @@ def analise():
     dificuldade_sim, dificuldade_nao = contar("social")
     preconceito_sim, preconceito_nao = contar("sofreu")
 
-
-    # ==========================
-    # IDADE (%)
-    # ==========================
+    # IDADES
     cursor.execute("SELECT idade FROM respostas")
     idades = cursor.fetchall()
 
@@ -169,13 +187,10 @@ def analise():
     idade_adulto = round((adulto / total) * 100)
     idade_idoso = round((idoso / total) * 100)
 
-
-    # ==========================
-    # COR / RAÇA (%)
-    # ==========================
+    # COR / RAÇA
     def porcentagem_cor(nome):
         cursor.execute(
-            "SELECT COUNT(*) FROM respostas WHERE cor_raca=?",
+            "SELECT COUNT(*) FROM respostas WHERE cor_raca=%s",
             (nome,)
         )
         qtd = cursor.fetchone()[0]
@@ -187,6 +202,7 @@ def analise():
     amarela = porcentagem_cor("Amarela")
     indigena = porcentagem_cor("Indígena")
 
+    cursor.close()
     conn.close()
 
     return render_template(
@@ -235,9 +251,11 @@ def analise():
         parda=parda,
         amarela=amarela,
         indigena=indigena
-    )   
+    )
 
-# INICIAR SISTEMA
+
+
+# INICIAR
 
 if __name__ == "__main__":
     criar_banco()
